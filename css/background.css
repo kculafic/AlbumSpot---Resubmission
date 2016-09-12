@@ -1,0 +1,30 @@
+
+body {
+  background-image: url(../img/records53.jpg);
+  box-sizing: border-box;
+}
+
+#shopbutton {
+  margin: 30px;
+  margin-bottom: 100px;
+  text-align: center;
+  box-sizing: border-box;
+
+
+}
+
+#maincontainer {
+  padding-bottom: 60%;
+
+}
+
+#footer {
+  padding: 3px;
+  margin: 3px;
+
+}
+
+#subfooter {
+  padding: 3px;
+  margin-bottom: 3px;
+}
