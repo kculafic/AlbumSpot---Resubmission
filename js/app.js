@@ -37,33 +37,6 @@ $(document).ready(function() {
     })
   }
 
-  // function getSpotifyAlbumData() {
-  //   for (let album of albums) {
-  //     const $spotXhr = $.getJSON(`https://api.spotify.com/v1/search?q=album:${album.albumName}%20artist:${album.artistName}&type=album`);
-  //
-  //     $spotXhr.done(function(albumData) {
-  //       let albumItems = albumData.albums.items[0];
-  //
-  //       if (albumItems) {
-  //         getSongSample(album, albumItems.id);
-  //       }
-  //     });
-  //   }
-  //
-  //   function getSongSample(album, albumId) {
-  //     const $musicXhr = $.getJSON(`https://api.spotify.com/v1/albums/${albumId}`);
-  //
-  //     $musicXhr.done(function(musicData) {
-  //       const prevUrl = musicData.tracks.items[0].preview_url;
-  //
-  //       album.sampleUrl = prevUrl;
-  //
-  //       $('#listings').empty();
-  //       renderAlbums()
-  //     });
-  //   }
-  // }
-
   function goToDiscogs() {
     let $searchEl;
     $('#shopbutton').empty();
@@ -87,16 +60,12 @@ $(document).ready(function() {
       let $title = $('<h6 class="card-title truncate">');
       let $albumArtwork = $('<img class="artwork">');
       let $card = $('<div class="card hoverable">');
-      // let $sound = $('<audio>  </audio>');
-      // let $audioSample = $('<a class="black-text white waves-effect waves-light btn" id="sample">');
 
       $($title).attr({
         'data-position': 'top',
         'data-tooltip': (album.albumName)
       });
 
-      // $audioSample.text('Audio Sample');
-      // $($audioSample).attr({href: album.sampleUrl});
 
       $title.append(album.albumName)
 
@@ -104,7 +73,7 @@ $(document).ready(function() {
 
       $content.append($title);
       $content.append($albumArtwork);
-      // $content.append($audioSample);
+      
       $card.append($content);
       $column.append($card);
 
