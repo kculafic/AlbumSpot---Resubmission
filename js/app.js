@@ -3,6 +3,10 @@ $(document).ready(function() {
 
   let albums = [];
 
+  function emptyAlbumArr() {
+    albums = [];
+  }
+
   function modelData(e) {
     e.preventDefault();
     const search = $('#search').val();
@@ -13,6 +17,8 @@ $(document).ready(function() {
     let $xhr = $.getJSON(`http://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&artist=${search}&limit=10&api_key=f7699d11f81610e3d8fe4c8d5207e11c&format=json`);
 
     $xhr.done(function(albumsData) {
+      emptyAlbumArr();
+      clearAlbumResults();
       const topAlbums = albumsData.topalbums.album
 
       for (let album of topAlbums) {
@@ -23,9 +29,7 @@ $(document).ready(function() {
         }
         albums.push(lp);
       }
-      // getSpotifyAlbumData()
-      console.log(albums);
-      renderAlbums();
+      renderAlbums(albums);
     });
 
     $xhr.fail(function(err) {
@@ -67,11 +71,16 @@ $(document).ready(function() {
     var $searchField = $('#search').val();
     $searchEl = $searchField.replace(' ', '_');
     $('#shop').attr("href", `https://www.discogs.com/search/?q=${$searchEl}&type=master&format=vinyl`);
+
+    $('#search').val('');
+
+  }
+
+  function clearAlbumResults() {
+    $('#listings').empty();
   }
 
   function buildCards() {
-    $('#maincontainter').empty();
-
     for (let album of albums) {
       let $column = $('<div class="col s12 m6 l6">');
       let $content = $('<div class="card-content center">');
